@@ -52,3 +52,17 @@ pawn_a2 = game_board.get_occupant((7,3))
 
 pawn_a2.move((8,2), game_board)
 game_board.pretty_print_board_state()
+
+bishop_c1 = game_board.get_occupant((1,3))
+bishop_c1.move((3,1), game_board)
+
+game_board.pretty_print_board_state()
+
+bishop_c1 = game_board.get_occupant((3,1))
+bishop_c1.move((7,5), game_board)
+
+game_board.pretty_print_board_state()
+
+rook_a8 = game_board.get_occupant((8,1))
+rook_a8.move((8,2), game_board)
+game_board.pretty_print_board_state()

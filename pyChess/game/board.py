@@ -82,4 +82,4 @@ class Board():
         for idx, row in enumerate(board):
             print(f"{8 - idx} {' '.join(row)} {8 - idx}")
         print("  a b c d e f g h")
-    
+        print("")
