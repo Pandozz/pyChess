@@ -4,7 +4,7 @@ class King(Piece):
     
     def is_legal_move(self, end_square, board):
         # Check if move is on the board
-        board.validate_square()
+        board.validate_square(end_square)
 
         dx = abs(end_square[1] - self.position[1])
         dy = abs(end_square[0] - self.position[0])

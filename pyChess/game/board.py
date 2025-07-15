@@ -40,7 +40,6 @@ class Board():
         
     def remove_occupant(self, square):
         self.validate_square(square)
-        self.board_state[square].kill()
         self.board_state[square] = None
         
     def attacking_square(self, square, color):
@@ -51,4 +50,36 @@ class Board():
     def print_board_state(self):
         print(self.board_state)
         # TODO: Pretty print
+
+
+    def pretty_print_board_state(self):
+        # Create an 8x8 grid initialized with empty spaces
+        board = [['.' for _ in range(8)] for _ in range(8)]
+
+        # Map piece types to symbols
+        piece_symbols = {
+            'pawn': 'P',
+            'rook': 'R',
+            'knight': 'N',
+            'bishop': 'B',
+            'queen': 'Q',
+            'king': 'K'
+        }
+
+        # Place each piece on the board
+        for loc, piece in self.board_state.items():
+            if not piece:
+                continue
+            rank, file = loc
+            symbol = piece_symbols.get(piece.get_type())
+            # Use uppercase for white, lowercase for black
+            if piece.get_color() == 'black':
+                symbol = symbol.lower()
+            board[8 - rank][file - 1] = symbol  # flip rank for display (rank 8 at top)
+
+        # Print the board with ranks and files
+        print("  a b c d e f g h")
+        for idx, row in enumerate(board):
+            print(f"{8 - idx} {' '.join(row)} {8 - idx}")
+        print("  a b c d e f g h")
     
