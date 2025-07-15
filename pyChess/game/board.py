@@ -14,7 +14,7 @@ class Board():
         for piece in pieces:
             self.add_occupant(piece.get_position(), piece)
             
-    def _validate_square(self, square):
+    def validate_square(self, square):
         if square[0] not in self.rows or square[1] not in self.columns:
             raise ValueError(f"{chr(square[1])}, {square[0]}) is not a valid square.")
         
@@ -25,21 +25,22 @@ class Board():
         return self.columns
     
     def is_occupied(self, square):
-        self._validate_square(square)
+        self.validate_square(square)
         return self.board_state[square] != None
     
     def get_occupant(self, square) -> Piece:
-        self._validate_square(square)
+        self.validate_square(square)
         return self.board_state[square]
     
     def add_occupant(self, square, piece):
-        self._validate_square(square)
+        self.validate_square(square)
         self.board_state[square] = piece
         
     def remove_occupant(self, square):
-        self._validate_square(square)
+        self.validate_square(square)
+        self.board_state[square].kill()
         self.board_state[square] = None
-        
+
     def print_board_state(self):
         print(self.board_state)
         # TODO: Pretty print

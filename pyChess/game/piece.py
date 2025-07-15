@@ -11,10 +11,11 @@ class Piece(ABC):
         self.isAlive = True
         
     def move(self, end_square, board) -> int:
-        
+        if not self.isAlive:
+            return ValueError(f"{self.id} is no longer on the board.")
         #Check if move is legal in subclass
         if not self.is_legal_move(end_square, board):
-            return -1
+            raise ValueError(f"{self.id} to {end_square} is not a valid move.")
     
         # Check if square is occupied by enemy, if so attack.
         if board.is_occupied(end_square) and board.get_occupant(end_square).get_color() != self.color:
@@ -26,15 +27,14 @@ class Piece(ABC):
             self.position = end_square
             board.add_occupant(end_square)
             return
-            
-        # Otheriwse move is invalid, shouldn't get here technially
-        return -1
+
         
     def is_alive(self) -> bool:
         return self.isAlive
      
     def kill(self) -> None:
         self.isAlive = False
+        self.position = None
     
     def get_position(self) -> tuple[int, int]:
         return self.position
