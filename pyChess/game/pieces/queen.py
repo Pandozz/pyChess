@@ -13,5 +13,5 @@ class Queen(Piece):
         # If it's not diagonal AND not straight, it's invalid
         if dx != dy and end_square[0] != self.position[0] and end_square[1] != self.position[1]:
             return False
-        
+        #TODO: deal with friendly units blocking
         return True

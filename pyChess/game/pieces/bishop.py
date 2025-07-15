@@ -9,5 +9,7 @@ class Bishop(Piece):
         # Any move must be within a diagonal
         if abs(end_square[1] - self.position[1]) != abs(end_square[0] - self.position[0]):
             return False
-            
+
+        #TODO: deal with friendly units blocking
+
         return True
