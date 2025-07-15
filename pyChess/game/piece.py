@@ -55,6 +55,9 @@ class Piece(ABC):
     def get_type(self) -> str:
         return self.type
 
+    def get_id(self) -> str:
+        return self.id
+
     @abstractmethod
     def is_legal_move(self, end_square, board) -> bool:
         raise NotImplementedError("is_legal_move not implemnented in Piece base class.")
