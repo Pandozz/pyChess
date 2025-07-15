@@ -1,7 +1,8 @@
 from game.piece import Piece
 
+
 class Knight(Piece):
-    
+
     def is_legal_move(self, end_square, board):
         # Check if move is on the board
         board.validate_square(end_square)

@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 
+
 class Piece(ABC):
 
     def __init__(self, config):
         self.id = config['id']
         self.type = config['type']
         self.color = config['color']
+        self.value = config['value']
 
         self.position = config['position']
         self.isAlive = True

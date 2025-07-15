@@ -1,5 +1,6 @@
 from game.piece import Piece
 
+
 class Bishop(Piece):
 
     def is_legal_move(self, end_square, board):

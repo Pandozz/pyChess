@@ -16,6 +16,7 @@ for file_index, abbrev in enumerate(white_back_rank, start=1):
         'id': f"{abbrev}{square}",
         'type': {'R': 'rook', 'N': 'knight', 'B': 'bishop', 'Q': 'queen', 'K': 'king'}[abbrev],
         'color': 'white',
+        'value': {'R': 5, 'N': 3, 'B': 3, 'Q': 9, 'K': 0}[abbrev],
         'position': (1, file_index)
     }
     chess_pieces.append(piece_info)
@@ -28,6 +29,7 @@ for file_index in range(1, 9):
         'id': f"P{square}",
         'type': 'pawn',
         'color': 'white',
+        'value': 1,
         'position': (2, file_index)
     })
 
@@ -39,6 +41,7 @@ for file_index, abbrev in enumerate(black_back_rank, start=1):
         'id': f"{abbrev}{square}",
         'type': {'R': 'rook', 'N': 'knight', 'B': 'bishop', 'Q': 'queen', 'K': 'king'}[abbrev],
         'color': 'black',
+        'value': {'R': 5, 'N': 3, 'B': 3, 'Q': 9, 'K': 0}[abbrev],
         'position': (8, file_index)
     }
     chess_pieces.append(piece_info)
@@ -51,6 +54,7 @@ for file_index in range(1, 9):
         'id': f"P{square}",
         'type': 'pawn',
         'color': 'black',
+        'value': 1,
         'position': (7, file_index)
     })
 

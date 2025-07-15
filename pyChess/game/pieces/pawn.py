@@ -1,12 +1,13 @@
 from game.piece import Piece
 
+
 class Pawn(Piece):
-    
+
     def __init__(self, config):
         super().__init__(config)
-    
+
         self.start_square = config['position']
-    
+
     def is_legal_move(self, end_square, board):
         # Check if move is on the board
         board.validate_square(end_square)
@@ -26,7 +27,7 @@ class Pawn(Piece):
         # Any move must be within +- 1 column
         if end_square[1] > self.position[1] + 1 or end_square[1] < self.position[1] - 1:
             return False
-        
+
         # Any non-first move must be 1 row further
         if self.color == 'white':
             if end_square[0] != self.position[0] + 1:
@@ -44,5 +45,5 @@ class Pawn(Piece):
             # TODO: Handle En-passant
             if not board.is_occupied(end_square):
                 return False
-            
+
         return True
