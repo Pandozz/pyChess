@@ -25,8 +25,21 @@ for piece in starting_pieces:
     else:
         raise ValueError(f"{piece['type']} is an invalid piece type.")
 
-game_board = Board(starting_piece_list)
-game_board.pretty_print_board_state()
+class TestChess():
+
+    def __init__(self):
+        self.game_board = Board(starting_piece_list)
+
+    def test_pawn_move(self):
+        starting_square = (2, 2)
+        target_square = (4, 2)
+        pawn = self.game_board.get_occupant(starting_square)
+        id = pawn.get_id()
+
+        pawn.move(target_square, self.game_board)
+        assert (self.game_board.is_occupied((target_square)))
+        assert (not self.game_board.is_occupied((starting_square)))
+        assert (self.game_board.get_occupant(target_square).get_id() == id)
 
 pawn_a2 = game_board.get_occupant((2,2))
 
