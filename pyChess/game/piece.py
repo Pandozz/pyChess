@@ -3,10 +3,11 @@ from abc import ABC, abstractmethod
 class Piece(ABC):
     
     def __init__(self, config):
-        self.type = config.type
-        self.color = config.color
+        self.id = config['id']
+        self.type = config['type']
+        self.color = config['color']
         
-        self.location = config.location
+        self.position = config['position']
         self.isAlive = True
         
     def move(self, end_square, board) -> int:
@@ -16,14 +17,14 @@ class Piece(ABC):
             return -1
     
         # Check if square is occupied by enemy, if so attack.
-        if board.is_occupied(end_square) and board.occupant_color(end_square) != self.color:
+        if board.is_occupied(end_square) and board.get_occupant(end_square).get_color() != self.color:
             board.get_occupant(end_square).kill()
-            board.clear(end_square)
+            board.remove_occupant(end_square)
         
         # Move if empty.
         if not board.is_occupied(end_square):
-            self.location = end_square
-            board.occupy_square(end_square)
+            self.position = end_square
+            board.add_occupant(end_square)
             return
             
         # Otheriwse move is invalid, shouldn't get here technially
@@ -35,11 +36,17 @@ class Piece(ABC):
     def kill(self) -> None:
         self.isAlive = False
     
-    def get_location(self) -> tuple[int, int]:
-        return self.location
+    def get_position(self) -> tuple[int, int]:
+        return self.position
     
-    def set_location(self, square) -> None:
-        self.location = square
+    def set_position(self, square) -> None:
+        self.position = square
+        
+    def get_color(self) -> str:
+        return self.color
+    
+    def get_type(self) -> str:
+        return self.type
     
     @abstractmethod
     def is_legal_move(self, end_square, board) -> bool:
