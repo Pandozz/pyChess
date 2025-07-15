@@ -50,7 +50,7 @@ class Piece(ABC):
     
     @abstractmethod
     def is_legal_move(self, end_square, board) -> bool:
-        pass # override in subclass
+        raise NotImplementedError("is_legal_move not implemnented in Piece base class.")
     
     def __repr__(self):
         return f"Piece(id={self.id}, type={self.type}, color={self.color}, position={self.position})"
