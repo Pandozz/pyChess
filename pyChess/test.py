@@ -59,10 +59,20 @@ bishop_c1.move((3,1), game_board)
 game_board.pretty_print_board_state()
 
 bishop_c1 = game_board.get_occupant((3,1))
-bishop_c1.move((7,5), game_board)
+try:
+    bishop_c1.move((8,6), game_board)
+except ValueError as e:
+    print(f"Caught {e}")
 
 game_board.pretty_print_board_state()
 
 rook_a8 = game_board.get_occupant((8,1))
 rook_a8.move((8,2), game_board)
+game_board.pretty_print_board_state()
+
+rook_a8 = game_board.get_occupant((8,2))
+try:
+    rook_a8.move((4,2), game_board)
+except ValueError as e:
+    print(f"Caught {e}")
 game_board.pretty_print_board_state()
