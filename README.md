@@ -4,14 +4,14 @@
 ## PHASE 1: Game Logic
 
 ### Board Representation
-- Grid of empty/occupied spaces
+- ✔️ Grid of empty/occupied spaces
 
 ### Piece Representation
-- Type
-- Icon
+- ✔️ Type
+- ✔️ Icon
 - Value
-- Color
-- Position
+- ✔️ Color
+- ✔️ Position
 - Starting Position (for special pawn, king, and rook logic)
 
 ### Player Representation
@@ -23,15 +23,15 @@
 - Name
 
 ### Piece Movement
-- Standard movement patterns
+- ✔️ Standard movement patterns
 - Capturing moves:
-  - Diagonal pawn attack
+  - ✔️ Diagonal pawn attack
   - En-passant
   - King capture rules
 - Special moves:
   - Promotion
   - Castling
-- Friendly blocked moves (e.g. bishop blocked by friendly pawn)
+- ✔️ Friendly blocked moves (e.g. bishop blocked by friendly pawn)
 
 ### Game Rules
 - Checks
